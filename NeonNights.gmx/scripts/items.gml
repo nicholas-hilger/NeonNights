@@ -1,0 +1,54 @@
+itemName[0] = ""
+itemType[0] = 0
+itemDesc[0] = ""
+itemAtt[0] = 0
+itemGun[0] = 0
+itemDef[0] = 0
+itemSpd[0] = 0
+itemAcc[0] = 0
+itemDodge[0] = 0
+itemWorth[0] = 0
+
+itemName[1] = "Shank"
+itemType[1] = 1
+itemDesc[1] = "Small, but it works. +1 WEP"
+itemAtt[1] = 1
+itemGun[1] = 0
+itemDef[1] = 0
+itemSpd[1] = 0
+itemAcc[1] = 0
+itemDodge[1] = 0
+itemWorth[1] = 5
+
+itemName[2] = "Snubnose"
+itemType[2] = 2
+itemDesc[2] = "Tried and true, but weak. +3 GUN"
+itemAtt[2] = 0
+itemGun[2] = 3
+itemDef[2] = 1
+itemSpd[2] = 0
+itemAcc[2] = 0
+itemDodge[2] = 0
+itemWorth[2] = 10
+
+itemName[3] = "Jacket"
+itemType[3] = 3
+itemDesc[3] = "Threadbare, yet comfy. +1 DEF"
+itemAtt[3] = 0
+itemGun[3] = 0
+itemDef[3] = 1
+itemSpd[3] = 0
+itemAcc[3] = 0
+itemDodge[3] = 0
+itemWorth[3] = 12
+
+itemName[4] = "Adrenaline Pump"
+itemType[4] = 4
+itemDesc[4] = "An old aug that helps reflexes. +1 SPD, +1 DGE"
+itemAtt[4] = 0
+itemGun[4] = 0
+itemDef[4] = 0
+itemSpd[4] = 1
+itemAcc[4] = 0
+itemDodge[4] = 1
+itemWorth[4] = 20

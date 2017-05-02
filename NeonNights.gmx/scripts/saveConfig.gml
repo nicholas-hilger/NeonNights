@@ -1,0 +1,5 @@
+if(file_exists("NNConfig.sav")) file_delete("NNConfig.sav")
+ini_open("NNConfig.sav")
+ini_write_real("Config","mVol",global.mVol)
+ini_write_real("Config","sVol",global.sVol)
+ini_close()
