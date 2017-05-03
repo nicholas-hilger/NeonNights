@@ -27,20 +27,7 @@
             <kind>1</kind>
             <string>audio_pause_all()
 audio_play_sound(battleMusic,1,1)
-if(room = alley) instance_create(x+195,y-50,thug)
-if(room = overflow)
-{
-l = irandom(99) + 1
-if(l &lt; 40) instance_create(x+195,y-50,thug)
-else instance_create(x+195,y-50,slumBot)
-}
-if(room = tunnel)
-{
-l = irandom(99) + 1
-if(l &lt; 20) instance_create(x+195,y-50,thug)
-else if(l &gt;= 20 and l &lt; 40) instance_create(x+195,y-50,slumBot)
-else instance_create(x+195,y-50,corper)
-}
+spawnEn()
 done = 0
 randomize()
 appear = " has appeared!"
@@ -62,6 +49,9 @@ x = view_xview[0]+340
 y = view_yview[0]+240
 pSprite = s_mPlayerDown
 enImg = enPar.image_index
+
+player.atacked = 16
+enPar.attacked = 11
 </string>
           </argument>
         </arguments>
@@ -149,6 +139,7 @@ if(done &gt; 15)
 {
 if(player.xKey or player.yKey or player.aKey or player.bKey)
 {
+ds_list_clear(dialog)
 instance_destroy()
 player.battle= 0
 }
@@ -198,7 +189,7 @@ time = 0
 }
 if(player.aKey and player.heals &gt; 0 and wait = 0)
 {
-heal = (round(player.mHp /5))
+heal = (round(player.mHp /5)) + irandom(4) + 1
 audio_play_sound(healSound,1,0)
 player.hp += heal
 ds_list_insert(dialog,0,string(player.name) + " heals for " + string(heal) + " damage!")
@@ -210,7 +201,10 @@ if(player.yKey)
 player.battle = 0
 with(enPar) instance_destroy()
 dialog = ""
-instance_destroy()
+done = 1
+audio_play_sound(fleeSound,1,0)
+ds_list_insert(dialog,0,"")
+ds_list_insert(dialog,0,string(player.name) + " flees!")
 player.time = 0
 }
 }
@@ -221,11 +215,19 @@ with(player) time += spd
 with(enPar) time += spd
 }
 
-with(player) if(time = 16) battleBox.pSprite = s_mPlayerDown
-with(enPar) if(time = 10) 
+with(player) 
+{
+if(attacked = 15) battleBox.pSprite = s_mPlayerDown
+if(attacked &lt; 15) attacked++
+}
+with(enPar) 
+{
+if(attacked = 10) 
 {
 image_index--
 x -= 5
+}
+if(attacked &lt; 12) attacked++
 }
 </string>
           </argument>

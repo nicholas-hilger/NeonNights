@@ -25,7 +25,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>dialog = ""
+            <string>event_inherited()
+dialog = ""
+image_speed = 0
+facing = 1
 </string>
           </argument>
         </arguments>

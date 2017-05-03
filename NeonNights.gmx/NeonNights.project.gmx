@@ -18,9 +18,13 @@
     <sound>sound\shopMusic</sound>
     <sound>sound\titleMusic</sound>
     <sound>sound\optionsMusic</sound>
+    <sound>sound\fleeSound</sound>
   </sounds>
   <sprites name="sprites">
     <sprite>sprites\s_charBase</sprite>
+    <sprite>sprites\s_npc11</sprite>
+    <sprite>sprites\s_npc10</sprite>
+    <sprite>sprites\s_npc9</sprite>
     <sprite>sprites\s_npc8</sprite>
     <sprite>sprites\s_npc7</sprite>
     <sprite>sprites\s_shadow</sprite>
@@ -74,6 +78,7 @@
     <script>scripts\loadConfig.gml</script>
     <script>scripts\saveGame.gml</script>
     <script>scripts\loadGame.gml</script>
+    <script>scripts\spawnEn.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\msgFnt</font>
@@ -112,6 +117,7 @@
     <room>rooms\alley</room>
     <room>rooms\overflow</room>
     <room>rooms\tunnel</room>
+    <room>rooms\westSlumTown</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

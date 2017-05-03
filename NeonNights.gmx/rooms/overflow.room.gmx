@@ -10,7 +10,8 @@
   <persistent>0</persistent>
   <colour>3487029</colour>
   <showcolour>-1</showcolour>
-  <code></code>
+  <code>player.encounters = 1
+if(!audio_is_playing(slumMusic)) audio_play_sound(slumMusic,1,1)</code>
   <enableViews>-1</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>
@@ -105,7 +106,6 @@
     <instance objName="blockPar" x="640" y="288" name="inst_4D343977" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="blockPar" x="672" y="288" name="inst_4FE91622" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="blockPar" x="704" y="288" name="inst_A0D0A210" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="blockPar" x="736" y="288" name="inst_5005BBB2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="blockPar" x="768" y="288" name="inst_5ECD8B66" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="blockPar" x="800" y="288" name="inst_142AD0FD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="blockPar" x="832" y="288" name="inst_B195DAD8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -446,10 +446,10 @@
     <instance objName="land" x="960" y="416" name="inst_3203B415" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="land" x="960" y="384" name="inst_D688DC8A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="transfer" x="384" y="416" name="inst_B0259F4E" locked="0" code="rDest = alley&#xA;xDest = 1024&#xA;yDest = 704&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="shop" x="736" y="320" name="inst_0810BD75" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="shop" x="736" y="288" name="inst_0810BD75" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="npc" x="640" y="544" name="inst_02CE7CD6" locked="0" code="sprite_index = s_npc2&#xA;dialog = &quot;Man, this place is a dump...#It's almost like we live#in the slums!&quot;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="npc" x="928" y="320" name="inst_5365EC7F" locked="0" code="sprite_index = s_npc1&#xA;dialog = &quot;CLEANING PROGRESS: MINIMAL.#DAMAGE LEVELS: NOTICEABLE.#OVERALL STATUS: WHY BOTHER.&quot;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="npc" x="1056" y="480" name="inst_58F34C97" locked="0" code="sprite_index = s_npc4&#xA;dialog = &quot;ZZZ...#...bug off, skrum...#ZZZ...&quot;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="npc" x="1056" y="480" name="inst_58F34C97" locked="0" code="sprite_index = s_npc4&#xA;dialog = &quot;ZZZ...#...bug off, skrum...#ZZZ...&quot;&#xA;facing = 0&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="npc" x="896" y="544" name="inst_B0AE104D" locked="0" code="sprite_index = s_npc5&#xA;dialog = &quot;MORE DANGER SOUTH. CORPS CAME#THROUGH FOR SECURITY SWEEP.#TOOK LEGS AND ARM EARLIER.#PROCEDEDED TO ASSUALT ME WITH THEM.&quot;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="transfer" x="864" y="704" name="inst_C952115C" locked="0" code="rDest = tunnel&#xA;xDest = 864&#xA;yDest = 256&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="trashCan" x="496" y="560" name="inst_65870622" locked="0" code="dialog = &quot;Someone's half-eaten#Tiger Train meal is in here.#You're hungry, but not#that hungry.&quot;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -460,6 +460,8 @@
     <instance objName="land" x="576" y="256" name="inst_F781644B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="land" x="576" y="192" name="inst_DC193BE1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="npc" x="576" y="192" name="inst_1405ABC0" locked="0" code="sprite_index = s_npc8&#xA;dialog = &quot;ERROR: ACCESS TO INDUSTRIAL DISTRCIT#DENIED. PUNISHMENT FOR SECRET#TUNNEL CURRENTLY BEING DISCUSSED.#HAVE A GOOD DAY.&quot;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="land" x="736" y="288" name="inst_AF0B78EE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="blockPar" x="736" y="256" name="inst_97E5BEEC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="background1" x="544" y="512" w="32" h="32" xo="96" yo="0" id="10000274" name="inst_85CBF8BE" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
@@ -486,7 +488,6 @@
     <tile bgName="background1" x="640" y="256" w="32" h="32" xo="0" yo="0" id="10000399" name="inst_A09100D2" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="background1" x="672" y="256" w="32" h="32" xo="0" yo="0" id="10000400" name="inst_E6C1AC53" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="background1" x="704" y="256" w="32" h="32" xo="0" yo="0" id="10000401" name="inst_739887DF" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="background1" x="736" y="256" w="32" h="32" xo="0" yo="0" id="10000402" name="inst_A651281C" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="background1" x="768" y="256" w="32" h="32" xo="0" yo="0" id="10000403" name="inst_205EC3F0" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="background1" x="800" y="256" w="32" h="32" xo="0" yo="0" id="10000404" name="inst_1F949B2F" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="background1" x="832" y="256" w="32" h="32" xo="0" yo="0" id="10000405" name="inst_51C63889" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
@@ -556,7 +557,6 @@
     <tile bgName="background1" x="512" y="608" w="32" h="32" xo="96" yo="0" id="10000483" name="inst_BE332622" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="background1" x="480" y="608" w="32" h="32" xo="96" yo="0" id="10000484" name="inst_4F437BB1" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="background1" x="448" y="608" w="32" h="32" xo="96" yo="0" id="10000485" name="inst_EE52AD06" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="background1" x="736" y="288" w="32" h="32" xo="64" yo="0" id="10000488" name="inst_470CD0C9" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="background1" x="608" y="288" w="32" h="32" xo="32" yo="0" id="10000489" name="inst_4D1D7522" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="background1" x="1024" y="448" w="32" h="32" xo="0" yo="32" id="10000490" name="inst_FEB6BB3F" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="background1" x="896" y="672" w="32" h="32" xo="0" yo="0" id="10000491" name="inst_08CC3CBE" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
@@ -586,6 +586,10 @@
     <tile bgName="background1" x="544" y="192" w="32" h="32" xo="0" yo="0" id="10000845" name="inst_2EC67A9C" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="background1" x="608" y="224" w="32" h="32" xo="0" yo="0" id="10000846" name="inst_80A5ABFC" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="background1" x="608" y="192" w="32" h="32" xo="0" yo="0" id="10000847" name="inst_A295FCE5" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="background1" x="736" y="224" w="32" h="32" xo="0" yo="0" id="10000848" name="inst_0E7589F9" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="background1" x="768" y="224" w="32" h="32" xo="0" yo="0" id="10000849" name="inst_2A03741C" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="background1" x="704" y="224" w="32" h="32" xo="0" yo="0" id="10000850" name="inst_94CA11F0" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="background1" x="736" y="256" w="32" h="32" xo="64" yo="0" id="10000851" name="inst_0924B92E" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
   </tiles>
   <PhysicsWorld>0</PhysicsWorld>
   <PhysicsWorldTop>0</PhysicsWorldTop>

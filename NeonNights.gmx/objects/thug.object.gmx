@@ -30,19 +30,16 @@ randomize()
 nameGen()
 nameN = names[irandom(array_length_1d(names)-1)]
 name = "Thug " + string(nameN)
-if(room = alley) hp = 10
-else hp = 16
-if(room = alley) weAtt = 3
-else weAtt = 5
-guAtt = 6
+hp = 14
+weAtt = 3
+guAtt = 5
 def = 0
-spd = 1
-dodge = 3
-acc = 60
-if(room = alley) xp = irandom(2) + 7
-else xp = irandom(4) + 9
-cash = irandom(5) + 15
-drop = 20
+spd = 1.1
+dodge = 2
+acc = 55
+xp = irandom(3) + 7
+cash = irandom(5) + 17
+drop = 22
 
 image_speed = 0
 </string>
@@ -75,6 +72,7 @@ else if(n &gt;= 70 and n &lt; 80) gAtt(player)
 else 
 {
 ds_list_insert(battleBox.dialog,0,string(name) + " pauses and flexes their muscles!")
+attacked = 0
 image_index++
 x += 5
 }

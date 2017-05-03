@@ -33,11 +33,11 @@ name = "Slumbot " + string(nameN)
 hp = 20
 weAtt = 4
 def = 1
-spd = 1
-dodge = 8
+spd = 1.5
+dodge = 7
 acc = 80
-xp = irandom(8) + 8
-cash = irandom(10) + 13
+xp = irandom(6) + 9
+cash = irandom(10) + 15
 drop = 22
 
 image_speed = 0
@@ -70,6 +70,7 @@ if(n &lt; 90) wAtt(player)
 else 
 {
 ds_list_insert(battleBox.dialog,0,string(name) + " temporarily short-circuits!")
+attacked = 0
 image_index++
 x += 5
 }

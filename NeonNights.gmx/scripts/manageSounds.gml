@@ -12,5 +12,5 @@ audio_sound_gain(missSound,global.sVol,0)
 audio_sound_gain(talkSound,global.sVol,0)
 audio_sound_gain(winSound,global.sVol,0)
 audio_sound_gain(transferSound,global.sVol,0)
-
+audio_sound_gain(fleeSound,global.sVol,0)
 

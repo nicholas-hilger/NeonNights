@@ -10,7 +10,8 @@
   <persistent>0</persistent>
   <colour>3487029</colour>
   <showcolour>-1</showcolour>
-  <code></code>
+  <code>player.encounters = 1
+if(!audio_is_playing(slumMusic)) audio_play_sound(slumMusic,1,1)</code>
   <enableViews>-1</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>
@@ -280,12 +281,10 @@
     <instance objName="trashCan" x="752" y="400" name="inst_7DE98EEB" locked="0" code="dialog = &quot;A list in here has#'Beckeh's Waifus' written on it#in poor handwriting.&quot;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="trashCan" x="1104" y="656" name="inst_5EFF3DB8" locked="0" code="dialog = &quot;For some reason, this trash can#is empty.#How...suspicious.&quot;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="trashCan" x="1648" y="592" name="inst_D694C825" locked="0" code="dialog = &quot;There's a small green thing residing in here.#Maybe you should leave it alone.&quot;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="land" x="1728" y="768" name="inst_18C5ABC9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="blockPar" x="1760" y="768" name="inst_08B4CF15" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="npc" x="800" y="384" name="inst_EEAA0F04" locked="0" code="sprite_index = s_npc7&#xA;dialog = &quot;Oh deary me, those Corps brats#are getting rougher and rougher!#I rememeber a time when young'uns#respected their elders!&quot;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="npc" x="960" y="384" name="inst_FF5CBDAB" locked="0" code="dialog = &quot;Uuugh...need a stim...#Corps bastards thwacked me#pretty good...&quot;&#xA;sprite_index = s_npc2&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="npc" x="1408" y="576" name="inst_947D6A6D" locked="0" code="sprite_index = s_npc1&#xA;dialog = &quot;NOBODY KNOWS THE TROUBLE#I'VE SEEN. ASSUMING FETAL POSITION.&quot;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="npc" x="1728" y="768" name="inst_BBCFB232" locked="0" code="sprite_index = s_npc8&#xA;dialog = &quot;ERROR: ACCESS DENIED.#CORPS EMPLOYEES ONLY.#ADDENDUM: PLEASE REFRAIN FROM#MURDERING CORPS EMPLOYEES.&quot;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="npc" x="864" y="512" name="inst_E1655AB4" locked="0" code="sprite_index = s_npc8&#xA;dialog = &quot;WARNING: AREA UNDER CORPS CONTROL.#TURN BACK OR FACE BLOODY, DEADLY,#LETHAL, PAINFUL TERMINATION.#ERROR: RETRACT THAT.#YOU WILL EXPERIENCE A TICKLE PARTY.&quot; &#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="npc" x="736" y="608" name="inst_29175C72" locked="0" code="sprite_index = s_npc5&#xA;dialog = &quot;ERROR: NULL POINTER EXCEPTION.#LIMB STATUS: UNSATISFACTORY.#TIME LEFT: LITTLE.#CORPS THREAT LEVEL: HIGH.#EXPOSITION MATRIX: OVERLOADED.&quot;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="blockPar" x="704" y="576" name="inst_D8750B1F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -366,6 +365,7 @@
     <instance objName="blockPar" x="1056" y="608" name="inst_44256E73" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="blockPar" x="1024" y="608" name="inst_1CFD77ED" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="blockPar" x="1024" y="576" name="inst_4DED096B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="transfer" x="1728" y="768" name="inst_A4072EFE" locked="0" code="rDest = westSlumTown&#xA;xDest = 384&#xA;yDest = 928&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="background1" x="832" y="224" w="32" h="32" xo="0" yo="0" id="10000531" name="inst_937863CD" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

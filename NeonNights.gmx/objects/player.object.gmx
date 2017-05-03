@@ -26,8 +26,8 @@
           <argument>
             <kind>1</kind>
             <string>randomize()
+manageSounds()
 audio_stop_all()
-audio_play_sound(slumMusic,1,1)
 surface_resize(application_surface, display_get_width(), display_get_height());
 if(file_exists("NNSave.sav") and !global.new) loadGame()
 else
@@ -42,25 +42,29 @@ weAtt = 3
 guAtt = 9
 ammo = 10
 //mAmmo = 10
-spd = 2
+spd = 1.8
 xp = 0
-mXp = 15
+mXp = 20
 money = 20
 heals = 3
 lvl = 1
 dir = 270
 wepCost = 30
 gunCost = 50
+audio_play_sound(slumMusic,1,1)
 }
 
 miss = 0
 battle = 0
 moving = 0
 canHurt = 0
-enCh = 16
+enCh = 32
 time = 0
 mTime = 360
 walkSp = 2
+encounters = 1
+steps = 0
+attacked = 16
 </string>
           </argument>
         </arguments>
@@ -89,10 +93,16 @@ if(ammo &gt; 99) ammo = 99
 if(xp &gt;= mXp)
 {
 xp = (xp-mXp)
-mXp = round(mXp * 1.3)
-mHp += irandom(5) + 5
+mXp = round(mXp * 1.5)
+mHp += irandom(3) + + lvl
 hp = mHp
 lvl++
+if(lvl%5 = 0)
+{
+def++
+spd += 0.1
+acc++
+}
 }
 
 if(time &gt; mTime) time = mTime
@@ -139,7 +149,7 @@ shopping = instance_exists(shopBox)
 
 if(startKey and!talking and !shopping and !battle and !statMen)
 {
-audio_pause_all()
+audio_stop_all()
 saveGame()
 instance_destroy()
 room_goto(titleScreen)
@@ -178,8 +188,9 @@ if(aKey and speed = 0 and !statMen and !shopping)
     {
     if(place_meeting(x+32,y,interacter))
     {
-        npTalk = instance_place(x+32,y,interacter).dialog
-        createDialog(npTalk)
+        npTalk = instance_place(x+32,y,interacter)
+        if(npTalk.facing) with(npTalk) image_index = 2
+        createDialog(npTalk.dialog)
     }
     else if(place_meeting(x+32,y,shop)) instance_create(x,y,shopBox)
     }
@@ -187,8 +198,9 @@ if(aKey and speed = 0 and !statMen and !shopping)
     {
         if(place_meeting(x,y-32,interacter))
         {
-        npTalk = instance_place(x,y-32,interacter).dialog
-        createDialog(npTalk)
+        npTalk = instance_place(x,y-32,interacter)
+        if(npTalk.facing) with(npTalk) image_index = 0
+        createDialog(npTalk.dialog)
         }
         else if(place_meeting(x,y-32,shop)) instance_create(x,y,shopBox)
     }    
@@ -196,8 +208,9 @@ if(aKey and speed = 0 and !statMen and !shopping)
     {
         if(place_meeting(x-32,y,interacter))    
         {
-        npTalk = instance_place(x-32,y,interacter).dialog
-        createDialog(npTalk)
+        npTalk = instance_place(x-32,y,interacter)
+        if(npTalk.facing) with(npTalk) image_index = 3
+        createDialog(npTalk.dialog)
         }
         else if(place_meeting(x-32,y,shop)) instance_create(x,y,shopBox)   
     }
@@ -205,8 +218,9 @@ if(aKey and speed = 0 and !statMen and !shopping)
     {
     if(place_meeting(x,y+32,interacter))
         {
-        npTalk = instance_place(x,y+32,interacter).dialog
-        createDialog(npTalk)
+        npTalk = instance_place(x,y+32,interacter)
+        if(npTalk.facing) with(npTalk) image_index = 1
+        createDialog(npTalk.dialog)
         }
         else if(place_meeting(x,y+32,shop)) instance_create(x,y,shopBox)
         }        
@@ -265,14 +279,23 @@ audio_play_sound(transferSound,2,0)
             <kind>1</kind>
             <string>if(speed != 0)
 {
+steps++
 motion_set(0,0)
 randomize()
+if(encounters)
+{
+if(steps &lt; 3) enCh = 80 
+if(steps &gt;= 3 and steps &lt; 10) enCh = 32
+if(steps &gt;= 10 and steps &lt; 20) enCh = 25
+if(steps &gt; 30) enCh = 16
+}
 n = irandom(enCh)
-if(n = enCh)
+if(n = enCh and encounters)
 {
 instance_create(view_xview[0]+260,view_yview[0]+240,battleBox)
 battle = 1
-enCh = 16
+enCh = 32
+steps = 0
 }
 }
 </string>
@@ -309,6 +332,7 @@ image_speed = 0
 image_index = 0
 }
 //draw_text(x,y-32,enCh)
+//draw_text(x,y-64,steps)
 view_xview[0] = round(view_xview[0])
 view_yview[0] = round(view_yview[0])
 //texture_set_interpolation(1)

@@ -20,6 +20,7 @@ audio_play_sound(missSound,1,0)
 }
 else audio_play_sound(shot,2,0)
 en.hp -= enLoss
+attacked = 0
 
 if(!miss) ds_list_insert(dia, 0,string(name) + " blasts " + string(en.name) + " for " + string(enLoss) + " damage!#")
 else ds_list_insert(dia,0,string(name) + " whiffs and misses " + string(en.name) + "!#")

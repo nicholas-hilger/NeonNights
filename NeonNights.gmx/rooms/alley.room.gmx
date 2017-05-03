@@ -10,7 +10,8 @@
   <persistent>0</persistent>
   <colour>3487029</colour>
   <showcolour>-1</showcolour>
-  <code></code>
+  <code>player.encounters = 1
+if(!audio_is_playing(slumMusic)) audio_play_sound(slumMusic,1,1)</code>
   <enableViews>-1</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>

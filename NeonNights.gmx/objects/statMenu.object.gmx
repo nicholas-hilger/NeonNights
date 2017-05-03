@@ -98,7 +98,7 @@
 draw_set_font(battleFnt)
 draw_set_valign(fa_left)
 draw_set_halign(fa_top)
-draw_text(x-51,y-80,string(player.name) + "#LV: " + string(player.lvl) + "#HP:" + string(player.hp) + "/" + string(player.mHp) + "#BUL: " + string(player.ammo) + "#ACC: " + string(player.acc) + "#WEP: " + string(player.weAtt)+ "-" + string(player.weAtt+2) + "#GUN: " + string(player.guAtt) + "-" + string(player.guAtt+2) + "#DEF: " + string(player.def) + "#SPD: " + string(player.spd) + "#DGE: " + string(player.dodge) + "#EXP: " + string(player.xp) + "#NXT: " + string(player.mXp) + "#MON: " + string(player.money))
+draw_text(x-51,y-80,string(player.name) + "#LV: " + string(player.lvl) + "#HP:" + string(player.hp) + "/" + string(player.mHp) + "#BUL: " + string(player.ammo) + "#ACC: " + string(player.acc) + "#WEP: " + string(player.weAtt)+ "-" + string(player.weAtt+2) + "#GUN: " + string(player.guAtt) + "-" + string(player.guAtt+2) + "#DEF: " + string(player.def) + "#SPD: " + string(player.spd*10) + "#DGE: " + string(player.dodge) + "#EXP: " + string(player.xp) + "#NXT: " + string(player.mXp) + "#MON: " + string(player.money))
 </string>
           </argument>
         </arguments>
