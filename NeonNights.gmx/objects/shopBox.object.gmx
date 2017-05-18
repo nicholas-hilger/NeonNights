@@ -75,7 +75,7 @@ audio_resume_sound(slumMusic)
           <argument>
             <kind>1</kind>
             <string>a = player.aKey
-b = player.bKey
+b = keyboard_check_pressed(ord("X")) or gamepad_button_check_pressed(0,gp_face2)
 xK = player.xKey
 yK = player.yKey
 u = player.upKey
@@ -116,7 +116,7 @@ if(yK and mon &gt;= 20 and player.ammo &lt; 99)
 {
 with(player)
 {
-ammo++
+ammo += 3
 money -= 20
 audio_play_sound(shot,1,0)
 }

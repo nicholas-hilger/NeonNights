@@ -52,6 +52,7 @@ enImg = enPar.image_index
 
 player.atacked = 16
 enPar.attacked = 11
+run = 0
 </string>
           </argument>
         </arguments>
@@ -114,7 +115,8 @@ if(stim) bul = 0
 }
 ds_list_clear(dialog)
 ds_list_insert(dialog,0,string(enPar.name) + " dies! You get " + string(enPar.xp) + " EXP!") 
-ds_list_insert(dialog,0,"You found " + string(enPar.cash) + " MON on their corpse!")
+if(player.money + enPar.cash &lt; 999999) ds_list_insert(dialog,0,"You found " + string(enPar.cash) + " MON! You now have " + string(player.money+enPar.cash) + " MON.")
+else ds_list_insert(dialog,0,"You found " + string(enPar.cash) + " MON! You now have 999999 MON.")
 if(dr and stim)
 {
 ds_list_insert(dialog,0,string(enPar.name) + " had a stimpack on them!")
@@ -123,17 +125,26 @@ player.heals++
 else if(dr and bul)
 {
 ds_list_insert(dialog,0,string(enPar.name) + " had some ammo on them!")
-player.ammo += irandom(2) + 1
+player.ammo += irandom(2) + 3
 }
 else ds_list_insert(dialog,0,"")
 player.xp += enPar.xp
 player.money += enPar.cash
-if(player.xp &gt; player.mXp) ds_list_insert(dialog,0, "You leveled up!")
+if(player.xp &gt;= player.mXp) ds_list_insert(dialog,0, "You leveled up!")
 with(enPar) instance_destroy()
 }
 }
 
-if(!instance_exists(enPar)) done++
+if(player.hp &lt;= 0)
+{
+ds_list_clear(dialog)
+ds_list_insert(dialog,0,"")
+ds_list_insert(dialog,0,"You died...")
+ds_list_insert(dialog,0,"Better luck next time, skrum.")
+ds_list_insert(dialog,0,"")
+}
+
+if(!instance_exists(enPar) or player.hp &lt;= 0) done++
 
 if(done &gt; 15)
 {
@@ -141,7 +152,13 @@ if(player.xKey or player.yKey or player.aKey or player.bKey)
 {
 ds_list_clear(dialog)
 instance_destroy()
-player.battle= 0
+if(player.hp &gt; 0) player.battle = 0
+else
+{
+audio_stop_all()
+with(player) instance_destroy()
+room_goto(titleScreen)
+}
 }
 }
 if(ds_list_size(dialog) &gt; 4) ds_list_delete(dialog,4)
@@ -168,6 +185,7 @@ if(ds_list_size(dialog) &gt; 4) ds_list_delete(dialog,4)
           <argument>
             <kind>1</kind>
             <string>randomize()
+yKey = gamepad_button_check(0,gp_face4)
 if(!done and player.time = player.mTime)
 {
 if(player.xKey)
@@ -190,30 +208,31 @@ time = 0
 if(player.aKey and player.heals &gt; 0 and wait = 0)
 {
 heal = (round(player.mHp /5)) + irandom(4) + 1
+with(instance_create(x-25,y-98,hurtText))
+{
+val = other.heal
+heal = 1
+}
 audio_play_sound(healSound,1,0)
 player.hp += heal
 ds_list_insert(dialog,0,string(player.name) + " heals for " + string(heal) + " damage!")
 player.heals--
 player.time = 0
 }
-if(player.yKey)
+if(yKey and run &lt; 120 and !done)
 {
-player.battle = 0
-with(enPar) instance_destroy()
-dialog = ""
-done = 1
-audio_play_sound(fleeSound,1,0)
-ds_list_insert(dialog,0,"")
-ds_list_insert(dialog,0,string(player.name) + " flees!")
-player.time = 0
+runP = enPar.spd-player.spd
+if(runP &lt; 0.5) runP = 0.5
+run += runP
 }
+if(!yKey and !done) run = 0
 }
-
 if(!done)
 {
 with(player) time += spd
 with(enPar) time += spd
 }
+
 
 with(player) 
 {
@@ -228,6 +247,18 @@ image_index--
 x -= 5
 }
 if(attacked &lt; 12) attacked++
+}
+
+if(run = 120 and !done)
+{
+player.battle = 0
+with(enPar) instance_destroy()
+dialog = ""
+done = 1
+audio_play_sound(fleeSound,1,0)
+ds_list_insert(dialog,0,"")
+ds_list_insert(dialog,0,string(player.name) + " flees!")
+player.time = 0
 }
 </string>
           </argument>
@@ -256,7 +287,7 @@ draw_set_font(battleFnt)
 draw_set_color(c_white)
 draw_set_valign(fa_top)
 draw_set_halign(fa_left)
-draw_text(x-205,y-155,string(player.name) + "##LV: " + string(player.lvl) + "##HP:" + string(player.hp) + "/" + string(player.mHp) + "##WEP: " + string(player.weAtt)+ "-" + string(player.weAtt+2) + "##GUN: " + string(player.guAtt) + "-" + string(player.guAtt+2) + "##EXP: " + string(player.xp) + "##NXT: " + string(player.mXp))
+draw_text(x-205,y-155,string(player.name) + "##LV: " + string(player.lvl) + "##HP:  " + string(player.hp) + "/" + string(player.mHp) + "##WEP: " + string(player.weAtt)+ "-" + string(player.weAtt+5) + "##GUN: " + string(player.guAtt) + "-" + string(player.guAtt+5) + "##EXP: " + string(round((player.xp/player.mXp)*100)) + "%")
 if(gamepad_is_connected(0))
 {
 draw_sprite(s_xBut,0,x-200,y)
@@ -289,9 +320,9 @@ for(i = 0; i &lt; ds_list_size(dialog);i++) draw_text(x-211,y+(145-(i*14)),ds_li
 
 //if(instance_exists(enPar)) draw_sprite_ext(enPar.sprite_index,0,x+125,y-50,3,3,0,c_white,1)
 draw_sprite_ext(pSprite,0,x-25,y-50,-3,3,0,c_white,1)
-draw_sprite(s_timeBack,0,x-75,y)
 if(instance_exists(enPar))
 {
+draw_sprite(s_timeBack,0,x-75,y)
 draw_sprite(s_timeBack,0,x+76,y)
 draw_sprite_ext(s_time,0,x-75,y,(player.time/player.mTime),1,0,c_white,1)
 draw_text(x-45,y+25,"TIME")
@@ -299,6 +330,13 @@ draw_sprite_ext(s_time,0,x+76,y,(enPar.time/enPar.mTime),1,0,c_white,1)
 draw_text(x+105,y+25,"TIME")
 }
 draw_set_color(c_white)
+
+if(run &gt; 0 and !done)
+{
+draw_sprite(s_timeBack,0,x-75,y+55)
+draw_sprite_ext(s_run,0,x-75,y+55,(run/120),1,0,c_white,1)
+draw_text(x-45,y+75,"RUN")
+}
 </string>
           </argument>
         </arguments>

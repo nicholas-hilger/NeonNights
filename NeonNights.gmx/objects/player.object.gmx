@@ -33,19 +33,19 @@ if(file_exists("NNSave.sav") and !global.new) loadGame()
 else
 {
 name = global.playName
-mHp = 25
+mHp = 30
 hp = mHp
 dodge = 7
 acc = 70
 def = 1
 weAtt = 3
-guAtt = 9
+guAtt = 11
 ammo = 10
 //mAmmo = 10
 spd = 1.8
 xp = 0
 mXp = 20
-money = 20
+money = 40
 heals = 3
 lvl = 1
 dir = 270
@@ -88,13 +88,24 @@ attacked = 16
           <argument>
             <kind>1</kind>
             <string>if(hp &gt; mHp) hp = mHp
-if(hp &lt; 0) game_end()
+if(hp &lt;= 0)
+{
+hp = 0
+if(!audio_is_playing(deathMusic))
+{
+audio_stop_all()
+audio_play_sound(deathMusic,1,1)
+}
+}
 if(ammo &gt; 99) ammo = 99
 if(xp &gt;= mXp)
 {
 xp = (xp-mXp)
-mXp = round(mXp * 1.5)
-mHp += irandom(3) + + lvl
+mXp = round(mXp * 1.2)
+if(lvl &lt; 10) mHp += (5 + (lvl-1))
+if(lvl &gt;= 10 and lvl &lt; 50) mHp += 3 + (lvl/5)
+else mHp += (lvl/10)
+mHp = round(mHp)
 hp = mHp
 lvl++
 if(lvl%5 = 0)
@@ -107,6 +118,7 @@ acc++
 
 if(time &gt; mTime) time = mTime
 
+if(money &gt; 999999) money = 999999
 </string>
           </argument>
         </arguments>
@@ -135,7 +147,7 @@ downKey = keyboard_check(vk_down) or gamepad_button_check(0,gp_padd)
 leftKey = keyboard_check(vk_left) or gamepad_button_check(0,gp_padl)
 rightKey = keyboard_check(vk_right) or gamepad_button_check(0,gp_padr)
 aKey = keyboard_check_pressed(ord("C")) or gamepad_button_check_pressed(0,gp_face1)
-bKey = keyboard_check_pressed(ord("X")) or gamepad_button_check_pressed(0,gp_face2)
+bKey = keyboard_check(ord("X")) or gamepad_button_check(0,gp_face2)
 xKey = keyboard_check_pressed(ord("Z")) or gamepad_button_check_pressed(0,gp_face3)
 yKey = keyboard_check_pressed(ord("V")) or gamepad_button_check_pressed(0,gp_face4)
 startKey = keyboard_check_pressed(vk_escape) or gamepad_button_check_pressed(0,gp_start)
@@ -143,25 +155,24 @@ selKey = keyboard_check_pressed(vk_shift) or gamepad_button_check_pressed(0,gp_s
 
 
 talking = instance_exists(dialogBox)
-statMen = instance_exists(statMenu)
+menu = instance_exists(statMenu) or instance_exists(saveMenu)
 battle = instance_exists(battleBox)
 shopping = instance_exists(shopBox)
 
-if(startKey and!talking and !shopping and !battle and !statMen)
-{
-audio_stop_all()
-saveGame()
-instance_destroy()
-room_goto(titleScreen)
-}
+//if(xKey) xp = mXp
+
+if(bKey) walkSp = 4
+else walkSp = 2
+
+if(startKey and !menu and !battle) instance_create(x,y,saveMenu)
 
 if(selKey and !battle and !shopping and speed = 0)
 {
-if(!statMen) instance_create(view_xview[0] + 320,view_yview[0] + 240,statMenu)
+if(!menu) instance_create(view_xview[0] + 320,view_yview[0] + 240,statMenu)
 else with(statMenu) instance_destroy()
 }
 
-if(speed = 0 and !battle and !shopping and !statMen)
+if(speed = 0 and !battle and !shopping and !menu)
 {
 if(upKey and !place_meeting(x,y-32,blockPar) and !place_meeting(x,y-32,shop) and !talking) motion_set(90,walkSp)
 if(downKey and !place_meeting(x,y+32,blockPar)and !place_meeting(x,y+32,shop) and !talking) motion_set(270,walkSp)
@@ -172,7 +183,7 @@ if(leftKey and !place_meeting(x+-32,y,blockPar) and !place_meeting(x-32,y,shop) 
 if(speed &gt; 0) moving = 1
 else moving = 0
 
-if(place_meeting(x,y,land) and !talking and !battle)
+if(place_meeting(x,y,land) and !talking and !battle and !menu)
 {
 if(upKey) dir = 90
 if(downKey) dir = 270
@@ -180,7 +191,7 @@ if(rightKey) dir = 0
 if(leftKey) dir = 180
 }
 
-if(aKey and speed = 0 and !statMen and !shopping)
+if(aKey and speed = 0 and !menu and !shopping)
 {
     if(!talking and !battle)
     {

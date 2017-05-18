@@ -132,9 +132,13 @@ len--
 
 if(xKey)
 {
+if(len &gt; 0)
+{
 global.playName = name
 room_goto_next()
 instance_create(1008,400,player)
+}
+else audio_play_sound(shot,1,0)
 }
 
 </string>

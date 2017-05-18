@@ -121,7 +121,7 @@ draw_text(x,y+325,"Quit")
 draw_set_font(msgFnt)
 draw_text(x,y+400,"Created by Nicholas Hilger, 2017")
 
-draw_rectangle(x-130,y+(75*place),x+130,y+((75*place)+40),1)
+draw_rectangle(x-150,y+(75*place),x+150,y+((75*place)+50),1)
 </string>
           </argument>
         </arguments>

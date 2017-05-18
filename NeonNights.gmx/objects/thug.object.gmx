@@ -30,14 +30,14 @@ randomize()
 nameGen()
 nameN = names[irandom(array_length_1d(names)-1)]
 name = "Thug " + string(nameN)
-hp = 14
-weAtt = 3
-guAtt = 5
+hp = 20
+weAtt = 1
+guAtt = 2
 def = 0
 spd = 1.1
 dodge = 2
 acc = 55
-xp = irandom(3) + 7
+xp = irandom(2) + 3
 cash = irandom(5) + 17
 drop = 22
 

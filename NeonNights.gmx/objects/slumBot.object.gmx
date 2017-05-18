@@ -31,12 +31,12 @@ nameGen()
 nameN = names[irandom(array_length_1d(names)-1)]
 name = "Slumbot " + string(nameN)
 hp = 20
-weAtt = 4
+weAtt = 2
 def = 1
 spd = 1.5
 dodge = 7
 acc = 80
-xp = irandom(6) + 9
+xp = irandom(3) + 6
 cash = irandom(10) + 15
 drop = 22
 

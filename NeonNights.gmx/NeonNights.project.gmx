@@ -19,6 +19,7 @@
     <sound>sound\titleMusic</sound>
     <sound>sound\optionsMusic</sound>
     <sound>sound\fleeSound</sound>
+    <sound>sound\deathMusic</sound>
   </sounds>
   <sprites name="sprites">
     <sprite>sprites\s_charBase</sprite>
@@ -58,9 +59,12 @@
     <sprite>sprites\s_slumbot</sprite>
     <sprite>sprites\s_timeBack</sprite>
     <sprite>sprites\s_time</sprite>
+    <sprite>sprites\s_run</sprite>
     <sprite>sprites\s_shopBox</sprite>
     <sprite>sprites\s_selKey</sprite>
     <sprite>sprites\s_statMenu</sprite>
+    <sprite>sprites\s_wepIcons</sprite>
+    <sprite>sprites\s_invSel</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background1</background>
@@ -79,6 +83,9 @@
     <script>scripts\saveGame.gml</script>
     <script>scripts\loadGame.gml</script>
     <script>scripts\spawnEn.gml</script>
+    <script>scripts\weps.gml</script>
+    <script>scripts\guns.gml</script>
+    <script>scripts\augs.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\msgFnt</font>
@@ -109,6 +116,8 @@
     <object>objects\statMenu</object>
     <object>objects\titleMenu</object>
     <object>objects\options</object>
+    <object>objects\saveMenu</object>
+    <object>objects\hurtText</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\titleScreen</room>
@@ -118,6 +127,7 @@
     <room>rooms\overflow</room>
     <room>rooms\tunnel</room>
     <room>rooms\westSlumTown</room>
+    <room>rooms\room7</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

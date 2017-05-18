@@ -4,6 +4,7 @@ audio_sound_gain(nameMusic,global.mVol,0)
 audio_sound_gain(shopMusic,global.mVol,0)
 audio_sound_gain(titleMusic,global.mVol,0)
 audio_sound_gain(optionsMusic,global.mVol,0)
+audio_sound_gain(deathMusic,global.mVol,0)
 
 audio_sound_gain(hit,global.sVol,0)
 audio_sound_gain(shot,global.sVol,0)

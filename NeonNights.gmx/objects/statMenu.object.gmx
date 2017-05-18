@@ -26,6 +26,9 @@
           <argument>
             <kind>1</kind>
             <string>audio_play_sound(talkSound,1,0)
+weps()
+guns()
+augs()
 </string>
           </argument>
         </arguments>
@@ -98,7 +101,27 @@
 draw_set_font(battleFnt)
 draw_set_valign(fa_left)
 draw_set_halign(fa_top)
-draw_text(x-51,y-80,string(player.name) + "#LV: " + string(player.lvl) + "#HP:" + string(player.hp) + "/" + string(player.mHp) + "#BUL: " + string(player.ammo) + "#ACC: " + string(player.acc) + "#WEP: " + string(player.weAtt)+ "-" + string(player.weAtt+2) + "#GUN: " + string(player.guAtt) + "-" + string(player.guAtt+2) + "#DEF: " + string(player.def) + "#SPD: " + string(player.spd*10) + "#DGE: " + string(player.dodge) + "#EXP: " + string(player.xp) + "#NXT: " + string(player.mXp) + "#MON: " + string(player.money))
+if(player.lvl = 99)
+{
+xp = "N/A"
+mXp = "N/A"
+}
+else
+{
+xp = player.xp
+mXp = player.mXp
+}
+draw_text(x-235,y-200,"STATS:##" + string(player.name) + "##LV:  " + string(player.lvl) + "##HP:  " + string(player.hp) + "/" + string(player.mHp) + "##BUL: " + string(player.ammo) + "##ACC: " + string(player.acc) + "##WEP: " + string(player.weAtt)+ "-" + string(player.weAtt+5) + "##GUN: " + string(player.guAtt) + "-" + string(player.guAtt+5) + "##DEF: " + string(player.def) + "##SPD: " + string(round(player.spd*10)) + "##DGE: " + string(player.dodge) + "##EXP: " + string(xp) + "##NXT: " + string(mXp) + "##MON: " + string(player.money))
+
+draw_set_halign(fa_center)
+draw_set_valign(fa_center)
+draw_set_font(msgFnt)
+draw_text(x-50,y-185,"WEPS")
+
+for(i = 0; i &lt; array_length_1d(wepName); i++)
+{
+draw_sprite(s_wepIcons,i,x-50,y-(150-(36*i)))
+}
 </string>
           </argument>
         </arguments>

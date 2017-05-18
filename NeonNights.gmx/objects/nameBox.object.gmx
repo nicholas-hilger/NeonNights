@@ -145,7 +145,7 @@ for(j = 0; j &lt; 13; j++)
 draw_text(x+(30+(40*j)),y+(100*(i+1)),alpha[i,j])
 }
 }
-draw_text(x+10,y+20,nameSel.name)
+draw_text(x+10,y+20,"NAME:" + string(nameSel.name))
 //draw_text(x+500,y+20,nameSel.len)
 </string>
           </argument>
